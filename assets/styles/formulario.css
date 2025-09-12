@@ -120,8 +120,8 @@
 }
 
 .btn-submit {
-    background-color: var(--azul-medio);
-    color: var(--blanco);
+    background-color: var(--dorado);
+    color: var(--azul-oscuro);
     padding: 12px 40px;
     border: none;
     border-radius: 4px;
@@ -130,27 +130,13 @@
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
-    overflow: hidden;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-/* Efecto de onda en el botón */
-.btn-submit::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-}
-
 .btn-submit:hover {
-    background-color: var(--azul-oscuro);
+    background-color: var(--azul-medio);
+    color: var(--blanco);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(44, 62, 80, 0.3);
 }
@@ -250,9 +236,15 @@
    ANIMACIONES
    ============================================== */
 @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    75% {
+        transform: translateX(5px);
+    }
 }
 
 @keyframes slideDown {
@@ -267,9 +259,15 @@
 }
 
 @keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* ==============================================
