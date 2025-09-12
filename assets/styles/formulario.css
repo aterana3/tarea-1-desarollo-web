@@ -1,0 +1,466 @@
+/* Contenedor principal del formulario */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--blanco);
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decoración superior del formulario */
+.contact-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--dorado);
+}
+
+/* ==============================================
+   GRUPOS DE FORMULARIO
+   ============================================== */
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    color: var(--azul-medio);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+/* Asterisco para campos requeridos */
+.form-group label::after {
+    content: attr(data-required);
+    color: var(--dorado);
+    margin-left: 3px;
+}
+
+/* ==============================================
+   CAMPOS DE ENTRADA
+   ============================================== */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background-color: #fafafa;
+}
+
+/* Estado hover de los campos */
+.form-group input:hover,
+.form-group textarea:hover {
+    border-color: #bbb;
+    background-color: var(--blanco);
+}
+
+/* Estado focus de los campos */
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--dorado);
+    box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1);
+    background-color: var(--blanco);
+}
+
+/* Validación de campos */
+.form-group input:valid,
+.form-group textarea:valid {
+    border-color: #27ae60;
+}
+
+.form-group input:invalid:not(:focus):not(:placeholder-shown),
+.form-group textarea:invalid:not(:focus):not(:placeholder-shown) {
+    border-color: #e74c3c;
+}
+
+/* Campo de textarea específico */
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+    max-height: 300px;
+    line-height: 1.6;
+}
+
+/* ==============================================
+   PLACEHOLDERS
+   ============================================== */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #999;
+    font-style: italic;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.form-group input:focus::placeholder,
+.form-group textarea:focus::placeholder {
+    opacity: 0.3;
+}
+
+/* ==============================================
+   BOTÓN DE ENVÍO
+   ============================================== */
+.form-submit {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.btn-submit {
+    background-color: var(--azul-medio);
+    color: var(--blanco);
+    padding: 12px 40px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Efecto de onda en el botón */
+.btn-submit::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-submit:hover {
+    background-color: var(--azul-oscuro);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(44, 62, 80, 0.3);
+}
+
+.btn-submit:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(44, 62, 80, 0.3);
+}
+
+/* Estado deshabilitado */
+.btn-submit:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.btn-submit:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* ==============================================
+   MENSAJES DE VALIDACIÓN
+   ============================================== */
+.form-message {
+    display: none;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    animation: slideDown 0.3s ease;
+}
+
+.form-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    transition: background-color 0.3s ease;
+}
+
+.form-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.form-message.show {
+    display: block;
+}
+
+/* ==============================================
+   TOOLTIPS DE AYUDA
+   ============================================== */
+.form-group .tooltip {
+    position: absolute;
+    right: 10px;
+    top: 35px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--azul-claro);
+    color: var(--blanco);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    cursor: help;
+    transition: all 0.3s ease;
+}
+
+.form-group .tooltip:hover {
+    background-color: var(--dorado);
+    transform: scale(1.1);
+}
+
+.form-group .tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: var(--azul-oscuro);
+    color: var(--blanco);
+    text-align: center;
+    padding: 8px;
+    border-radius: 4px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    right: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+    border-radius: 2px;
+}
+
+/* ==============================================
+   ANIMACIONES
+   ============================================== */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ==============================================
+   GRUPO DE CAMPOS EN LÍNEA
+   ============================================== */
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.form-row .form-group {
+    margin-bottom: 0;
+}
+
+/* ==============================================
+   CAMPO DE SELECCIÓN PERSONALIZADO
+   ============================================== */
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    background-color: #fafafa;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%232c3e50' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 35px;
+}
+
+.form-group select:hover {
+    border-color: #bbb;
+    background-color: var(--blanco);
+}
+
+.form-group select:focus {
+    outline: none;
+    border-color: var(--dorado);
+    box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1);
+    background-color: var(--blanco);
+}
+
+/* ==============================================
+   CHECKBOX Y RADIO PERSONALIZADOS
+   ============================================== */
+.form-checkbox,
+.form-radio {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.form-checkbox input[type="checkbox"],
+.form-radio input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    accent-color: var(--dorado);
+}
+
+.form-checkbox label,
+.form-radio label {
+    cursor: pointer;
+    margin-bottom: 0;
+    font-weight: normal;
+}
+
+/* ==============================================
+   CONTADOR DE CARACTERES
+   ============================================== */
+.char-counter {
+    text-align: right;
+    font-size: 0.85rem;
+    color: #999;
+    margin-top: 5px;
+}
+
+.char-counter.warning {
+    color: #f39c12;
+}
+
+.char-counter.error {
+    color: #e74c3c;
+}
+
+/* ==============================================
+   DISEÑO RESPONSIVO PARA MÓVILES
+   ============================================== */
+@media (max-width: 768px) {
+    .contact-form {
+        padding: 2rem 1.5rem;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .form-group label {
+        font-size: 0.95rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        padding: 10px;
+        font-size: 16px; /* Previene el zoom en iOS */
+    }
+
+    .btn-submit {
+        width: 100%;
+        padding: 14px 20px;
+        font-size: 1rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .tooltip-text {
+        width: 150px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-form {
+        padding: 1.5rem 1rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.2rem;
+    }
+
+    .btn-submit {
+        padding: 12px 20px;
+        font-size: 0.95rem;
+        letter-spacing: 0.5px;
+    }
+
+    .form-message {
+        font-size: 0.85rem;
+        padding: 8px;
+    }
+}
+
+/* ==============================================
+   ACCESIBILIDAD - NAVEGACIÓN POR TECLADO
+   ============================================== */
+.form-group input:focus-visible,
+.form-group textarea:focus-visible,
+.form-group select:focus-visible,
+.btn-submit:focus-visible {
+    outline: 3px solid var(--dorado);
+    outline-offset: 2px;
+}
+
+/* Alta contraste para accesibilidad */
+@media (prefers-contrast: more) {
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        border-width: 3px;
+    }
+
+    .btn-submit {
+        border: 2px solid var(--blanco);
+    }
+}
+
+/* Modo oscuro (si se implementa) */
+@media (prefers-color-scheme: dark) {
+    .contact-form {
+        background: var(--azul-oscuro);
+        color: var(--blanco);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        background-color: var(--azul-medio);
+        color: var(--blanco);
+        border-color: var(--azul-claro);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+        color: #bbb;
+    }
+}

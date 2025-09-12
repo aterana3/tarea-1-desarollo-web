@@ -1,0 +1,493 @@
+/* Reset y configuración base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variables de colores corporativos */
+:root {
+    --azul-oscuro: #1a2332;
+    --azul-medio: #2c3e50;
+    --azul-claro: #34495e;
+    --dorado: #b8860b;
+    --gris-claro: #ecf0f1;
+    --blanco: #ffffff;
+    --texto-gris: #7f8c8d;
+    --sombra-suave: rgba(0, 0, 0, 0.1);
+    --sombra-media: rgba(0, 0, 0, 0.15);
+}
+
+/* Tipografía base */
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    line-height: 1.6;
+    color: var(--azul-oscuro);
+    background-color: var(--blanco);
+    scroll-behavior: smooth;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ==============================================
+   HEADER Y NAVEGACIÓN
+   ============================================== */
+header {
+    background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul-medio) 100%);
+    color: var(--blanco);
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px var(--sombra-suave);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo::before {
+    content: "⚖";
+    font-size: 2rem;
+    color: var(--dorado);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    color: var(--blanco);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+}
+
+nav a:hover {
+    color: var(--dorado);
+    background-color: rgba(184, 134, 11, 0.1);
+}
+
+/* ==============================================
+   SECCIÓN HERO / PRINCIPAL
+   ============================================== */
+.hero {
+    background: linear-gradient(rgba(26, 35, 50, 0.7), rgba(26, 35, 50, 0.7)),
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f5f5f5"/><path d="M0 300L50 290L100 310L150 295L200 305L250 298L300 302L350 296L400 304L450 299L500 301L550 297L600 303L650 298L700 302L750 296L800 304L850 299L900 301L950 297L1000 303L1050 298L1100 302L1150 296L1200 300" stroke="%23ddd" stroke-width="2" fill="none"/></svg>');
+    color: var(--blanco);
+    padding: 120px 0 80px;
+    text-align: center;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1s ease;
+}
+
+.hero .subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    color: var(--gris-claro);
+    animation: fadeInUp 1s ease 0.2s;
+    animation-fill-mode: both;
+}
+
+/* ==============================================
+   BOTONES
+   ============================================== */
+.btn-primary {
+    background-color: var(--dorado);
+    color: var(--blanco);
+    padding: 12px 30px;
+    border: none;
+    border-radius: 3px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-decoration: none;
+    margin-top: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-primary:hover {
+    background-color: #9a7209;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(184, 134, 11, 0.3);
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+/* ==============================================
+   SECCIÓN DE SERVICIOS
+   ============================================== */
+.services {
+    padding: 80px 0;
+    background-color: var(--gris-claro);
+}
+
+.services h2,
+.mission-vision h2,
+.contact h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--azul-oscuro);
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.services h2::after,
+.mission-vision h2::after,
+.contact h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--dorado);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.service-card {
+    background: var(--blanco);
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px var(--sombra-suave);
+    transition: all 0.3s ease;
+    border-top: 3px solid transparent;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px var(--sombra-media);
+    border-top-color: var(--dorado);
+}
+
+.service-card h3 {
+    color: var(--azul-medio);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.service-card p {
+    color: var(--texto-gris);
+    line-height: 1.8;
+}
+
+/* ==============================================
+   MISIÓN Y VISIÓN
+   ============================================== */
+.mission-vision {
+    padding: 80px 0;
+    background: var(--blanco);
+}
+
+.mv-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.mv-box {
+    padding: 2rem;
+    border-left: 4px solid var(--dorado);
+    background: linear-gradient(to right, rgba(184, 134, 11, 0.05), transparent);
+}
+
+.mv-box h3 {
+    color: var(--azul-medio);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.mv-box p {
+    color: var(--texto-gris);
+    line-height: 1.8;
+    font-size: 1.1rem;
+    text-align: justify;
+}
+
+/* ==============================================
+   SECCIÓN DE CONTACTO
+   ============================================== */
+.contact {
+    padding: 80px 0;
+    background-color: var(--gris-claro);
+}
+
+.contact-subtitle {
+    text-align: center;
+    color: var(--texto-gris);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+/* ==============================================
+   FOOTER
+   ============================================== */
+footer {
+    background: var(--azul-oscuro);
+    color: var(--blanco);
+    padding: 40px 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h4 {
+    color: var(--dorado);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.footer-section h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: var(--dorado);
+}
+
+.footer-section p,
+.footer-section ul {
+    color: var(--gris-claro);
+    line-height: 1.8;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section ul li:hover {
+    color: var(--dorado);
+    cursor: pointer;
+}
+
+.footer-section a {
+    color: var(--gris-claro);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: var(--dorado);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid var(--azul-claro);
+    color: var(--texto-gris);
+}
+
+/* ==============================================
+   ANIMACIONES
+   ============================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==============================================
+   DISEÑO RESPONSIVO
+   ============================================== */
+@media (max-width: 768px) {
+    header {
+        padding: 0.8rem 0;
+    }
+
+    .header-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1rem;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .logo::before {
+        font-size: 1.5rem;
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav a {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.9rem;
+        border-radius: 3px;
+        background-color: rgba(255, 255, 255, 0.1);
+        transition: background-color 0.2s ease;
+    }
+
+    nav a:hover {
+        background-color: rgba(184, 134, 11, 0.3);
+        color: var(--blanco);
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero .subtitle {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+    }
+
+    .services h2,
+    .mission-vision h2,
+    .contact h2 {
+        font-size: 2rem;
+    }
+
+    .mv-container {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-section h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
+    header {
+        padding: 0.6rem 0;
+    }
+
+    .header-content {
+        padding: 0 0.5rem;
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+
+    .logo::before {
+        font-size: 1.3rem;
+    }
+
+    nav ul {
+        gap: 0.3rem;
+    }
+
+    nav a {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.8rem;
+    }
+
+    .hero {
+        padding: 90px 0 50px;
+        min-height: 350px;
+    }
+
+    .hero h1 {
+        font-size: 1.75rem;
+    }
+
+    .services,
+    .mission-vision,
+    .contact {
+        padding: 60px 0;
+    }
+
+    .service-card {
+        padding: 1.5rem;
+    }
+
+    .mv-box {
+        padding: 1.5rem;
+    }
+
+    .btn-primary {
+        padding: 10px 25px;
+        font-size: 1rem;
+    }
+}
