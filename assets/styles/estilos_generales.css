@@ -374,6 +374,10 @@ footer {
         font-size: 1.2rem;
     }
 
+    .logo p {
+        display: none;
+    }
+
     .logo::before {
         font-size: 1.5rem;
     }
